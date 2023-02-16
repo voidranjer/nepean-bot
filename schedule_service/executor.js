@@ -17,18 +17,20 @@ async function fetch_all_jobs() {
 export default async function execute() {
   const jobs = await fetch_all_jobs();
   for (const job of jobs) {
-    const spawn = child_process.spawn;
-    const process = spawn("python", [
-      script_path,
-      job.seed,
-      job.court_name,
-      job.time_aria,
-      job.telephone,
-      job.email,
-      job.name,
-    ]);
-    process.stdout.on("data", (data) => {
-      console.log(data.toString());
-    });
+    if (job.enabled) {
+      const spawn = child_process.spawn;
+      const process = spawn("python", [
+        script_path,
+        job.seed,
+        job.court_name,
+        job.time_aria,
+        job.telephone,
+        job.email,
+        job.name,
+      ]);
+      process.stdout.on("data", (data) => {
+        console.log(data.toString());
+      });
+    }
   }
 }
