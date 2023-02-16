@@ -4,6 +4,9 @@ import { db } from "./firebase.js";
 
 const collection_name = "jobs";
 const script_path = "../job_service/main.py";
+const env = process.env.NODE_ENV;
+
+console.log(`Executor started with env: ${env}`);
 
 async function fetch_all_jobs() {
   const querySnapshot = await getDocs(collection(db, collection_name));
@@ -27,7 +30,7 @@ export default async function execute() {
         job.telephone,
         job.email,
         job.name,
-        "dev",
+        env,
       ]);
       process.stdout.on("data", (data) => {
         console.log(data.toString());
