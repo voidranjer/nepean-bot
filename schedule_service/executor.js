@@ -27,6 +27,7 @@ export default async function execute() {
         job.telephone,
         job.email,
         job.name,
+        "dev",
       ]);
       process.stdout.on("data", (data) => {
         console.log(data.toString());

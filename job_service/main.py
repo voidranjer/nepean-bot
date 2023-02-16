@@ -20,6 +20,7 @@ time_aria = sys.argv[3]
 telephone = sys.argv[4]
 email = sys.argv[5]
 name = sys.argv[6]
+env = sys.argv[7]
 
 try:
     options = Options()
@@ -54,12 +55,14 @@ try:
     # driver.find_element_by_id('field5970').send_keys(name)
 
     driver.find_element_by_id('submit-btn').click()
-    # driver.find_element_by_id('submit-btn').click()
+
+    if (env == 'prod'):
+        driver.find_element_by_id('submit-btn').click()
 
     time.sleep(5)
     driver.quit()
-    print("Succeeded")
-except:
-    print("Failed")
+    print(f"Successfully booked {court_name} at {time_aria} for {name}")
+except Exception as e:
+    print(e)
 
 sys.stdout.flush()
