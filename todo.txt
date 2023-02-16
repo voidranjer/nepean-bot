@@ -1,0 +1,1 @@
+Messaging services: Display "booking..." status in front end
