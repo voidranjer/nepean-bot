@@ -13,14 +13,6 @@ import time
 headless = True
 retry_rate = 0.01
 
-# seed = sys.argv[1]
-# court_name = sys.argv[2]
-# time_aria = sys.argv[3]
-# telephone = sys.argv[4]
-# email = sys.argv[5]
-# name = sys.argv[6]
-# env = sys.argv[7]
-
 
 def auto_book(seed, court_name, time_aria, telephone, email, name, is_test_run):
     try:
@@ -64,6 +56,5 @@ def auto_book(seed, court_name, time_aria, telephone, email, name, is_test_run):
         driver.quit()
         print(f"Successfully booked {court_name} at {time_aria} for {name}")
         return True
-        # sys.stdout.flush()
     except:
         return False
