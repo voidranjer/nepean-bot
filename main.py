@@ -12,14 +12,14 @@ seed = "https://reservation.frontdesksuite.ca/rcfs/nepeansportsplex/Home/Index?C
 # email = 'test@gmail.com'
 # name = 'James'
 
-headless = True
+sleep_time = 300
 retry_rate = 0.01
 
 
-def auto_book(court_name, time_aria, telephone, email, name, is_test_run):
+def auto_book(court_name, time_aria, telephone, email, name, show_browser, is_test_run):
     try:
         options = Options()
-        if (headless):
+        if (not show_browser):
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
         driver = webdriver.Chrome(options=options)
@@ -53,7 +53,7 @@ def auto_book(court_name, time_aria, telephone, email, name, is_test_run):
         if (not is_test_run):
             driver.find_element(By.ID, 'submit-btn').click()
 
-        time.sleep(5)
+        time.sleep(sleep_time)
         driver.quit()
         print(f"Successfully booked {court_name} at {time_aria} for {name}")
         return True
@@ -62,8 +62,9 @@ def auto_book(court_name, time_aria, telephone, email, name, is_test_run):
 
 
 def submit_form():
-    submit_button.config(text="Stop")
-    status_bar.config(text="Running", fg="orange")
+    # submit_button.config(text="Stop")
+    submit_button.config(text="Running...", state="disabled")
+    status_bar.config(text="Attempting to book", fg="orange")
     root.update()
 
     court_name = court_entry.get()
@@ -71,11 +72,13 @@ def submit_form():
     telephone = phone_entry.get()
     email = email_entry.get()
     name = name_entry.get()
+    show_browser = show_browser_var.get()
     is_test_run = test_run_var.get()
 
-    res = auto_book(court_name, time_aria, telephone, email, name, is_test_run)
+    res = auto_book(court_name, time_aria, telephone,
+                    email, name, show_browser, is_test_run)
 
-    submit_button.config(text="Start")
+    submit_button.config(text="Start", state="normal")
     status_bar.config(text="Failed", fg="red")
 
     if (res):
@@ -118,6 +121,12 @@ name_label.pack()
 name_entry = tk.Entry(root, width=30, justify="center")
 # name_entry.insert(0, "James")
 name_entry.pack()
+
+show_browser_var = tk.BooleanVar()
+show_browser_checkbox = tk.Checkbutton(
+    root, text="Show Browser", variable=show_browser_var)
+show_browser_checkbox.select()
+show_browser_checkbox.pack()
 
 test_run_var = tk.BooleanVar()
 test_run_checkbox = tk.Checkbutton(

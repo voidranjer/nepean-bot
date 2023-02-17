@@ -2,7 +2,7 @@
 
 ```bash
 pyinstaller --name 'Nepean Bookinator 3000' \
-            --icon 'shuttlecock.icns' \
+            --icon 'logo.icns' \
             --windowed  \
             main.py
 ```

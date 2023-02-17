@@ -37,7 +37,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['shuttlecock.icns'],
+    icon=['logo.icns'],
 )
 coll = COLLECT(
     exe,
@@ -52,6 +52,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='Nepean Bookinator 3000.app',
-    icon='shuttlecock.icns',
+    icon='logo.icns',
     bundle_identifier=None,
 )
