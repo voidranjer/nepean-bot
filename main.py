@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-import time
 import tkinter as tk
+import time
 
 seed = "https://reservation.frontdesksuite.ca/rcfs/nepeansportsplex/Home/Index?Culture=en&PageId=b0d362a1-ba36-42ae-b1e0-feefaf43fe4c&ShouldStartReserveTimeFlow=False&ButtonId=00000000-0000-0000-0000-000000000000"
 
@@ -101,7 +101,7 @@ court_entry.pack()
 time_label = tk.Label(root, text="Time")
 time_label.pack()
 time_entry = tk.Entry(root, width=30, justify="center")
-time_entry.insert(0, "6:30 PM Friday February 17, 2023")
+time_entry.insert(0, "9:00 PM Friday February 24, 2023")
 time_entry.pack()
 
 phone_label = tk.Label(root, text="Phone Number")

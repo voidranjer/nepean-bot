@@ -1,8 +1,8 @@
 # Steps to build:
 
 ```bash
-pyinstaller --name 'Nepean Bookinator 3000' \
-            --icon 'logo.icns' \
+pyinstaller --name 'Bookinator' \
+            --icon 'assets/logo.icns' \
             --windowed  \
             main.py
 ```
